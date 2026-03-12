@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key><string>com.claw.orchestrator</string>
+    <key>ProgramArguments</key>
+    <array>
+      <string>/bin/bash</string>
+      <string>/Users/claw/claw-org-orchestrator/scripts/run-with-1password.sh</string>
+    </array>
+    <key>RunAtLoad</key><true/>
+    <key>KeepAlive</key><true/>
+    <key>StandardOutPath</key><string>/Users/claw/logs/orchestrator.out.log</string>
+    <key>StandardErrorPath</key><string>/Users/claw/logs/orchestrator.err.log</string>
+
+    <!-- Store only the service account token here (or retrieve it another secure way) -->
+    <key>EnvironmentVariables</key>
+    <dict>
+      <key>OP_SERVICE_ACCOUNT_TOKEN</key><string>__SET_ME__</string>
+    </dict>
+  </dict>
+</plist>
