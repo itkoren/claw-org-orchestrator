@@ -1,0 +1,15 @@
+{
+  "Satya": {
+    "default": "tier2",
+    "escalation": "tier3",
+    "fallback": "tier1"
+  },
+  "Elon": { "default": "tier2", "escalation": "tier3", "fallback": "tier1" },
+  "Lucid": { "default": "tier3", "fallback": "tier2" },
+  "Pixel": { "default": "tier2", "fallback": "tier1", "escalation": "tier3" },
+  "Vector": { "default": "tier2", "fallback": "tier1", "escalation": "tier3" },
+  "Cipher": { "default": "tier3", "fallback": "tier2" },
+  "Mesh": { "default": "tier2", "fallback": "tier1", "escalation": "tier3" },
+  "Syntax": { "default": "tier2", "fallback": "tier1", "escalation": "tier3" },
+  "Lens": { "default": "tier2", "fallback": "tier1", "escalation": "tier3" }
+}
