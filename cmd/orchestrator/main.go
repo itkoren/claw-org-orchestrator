@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/itkoren/claw-org-orchestrator/internal/config"
-	"github.com/itkoren/claw-org-orchestrator/internal/scheduler"
+	"github.com/itkoren/claw-org-orchestrator/internal/orchestration"
 	"github.com/itkoren/claw-org-orchestrator/internal/slack"
 	"github.com/itkoren/claw-org-orchestrator/internal/supabase"
 )
@@ -26,8 +26,16 @@ func main() {
 
 	for {
 		<-ticker.C
-		if err := scheduler.Tick(cfg, sb, sl); err != nil {
-			log.Printf("tick error: %v\n", err)
+		queued, err := sb.ListQueuedTasks(25)
+		if err != nil {
+			log.Printf("ListQueuedTasks error: %v\n", err)
+			continue
+		}
+		for _, t := range queued {
+			if err := orchestration.ProcessTask(cfg, sb, sl, t.ID); err != nil {
+				log.Printf("ProcessTask(%s) error: %v\n", t.ID, err)
+				_ = sb.MarkTaskFailed(t.ID, err.Error())
+			}
 		}
 	}
 }
