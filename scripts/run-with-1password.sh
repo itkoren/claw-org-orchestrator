@@ -13,4 +13,7 @@ export SLACK_SIGNING_SECRET="$(op read "op://Claw/slack/signing_secret")"
 export GITHUB_TOKEN="$(op read "op://Claw/github/bot_token")"
 export BRAIN_REPO_SSH="$(op read "op://Claw/github/brain_repo_ssh")"
 
+export RUNNER_URL="http://127.0.0.1:8787"
+export BRAIN_REPO_DIR="/Users/claw/claw-brain"
+
 exec /usr/local/bin/orchestrator
